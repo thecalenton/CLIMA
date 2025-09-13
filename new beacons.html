@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLIMA - Mi Ternerita House</title>
+    <!-- Incluir Tailwind CSS desde CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto Mono', monospace;
+            color: #00ff00;
+            background-color: #000;
+            overflow-x: hidden;
+        }
+
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            filter: grayscale(100%) brightness(50%);
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 0;
+        }
+
+        .content-container {
+            z-index: 1;
+            position: relative;
+        }
+
+        .social-icon {
+            filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(287deg) brightness(100%) contrast(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .social-icon:hover {
+            transform: scale(1.1);
+        }
+
+        .info-card {
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            border: 2px solid #00ff00;
+            box-shadow: 0 0 20px #00ff00;
+        }
+
+        .buy-button {
+            background-color: #00ff00;
+            color: #000;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .buy-button:hover {
+            background-color: #00cc00;
+            transform: scale(1.05);
+        }
+
+        .section-title {
+            color: #00ff00;
+            text-shadow: 0 0 5px #00ff00;
+        }
+
+        .line {
+            height: 2px;
+            background-color: #00ff00;
+            box-shadow: 0 0 5px #00ff00;
+        }
+
+        .binary-text {
+            font-size: 0.8rem;
+            opacity: 0.5;
+            animation: binary-flow 10s linear infinite;
+        }
+
+        @keyframes binary-flow {
+            from {
+                transform: translateX(0);
+            }
+            to {
+                transform: translateX(-100%);
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-center text-center p-4">
+
+    <!-- Video de fondo que se repite -->
+    <video class="video-background" autoplay loop muted playsinline>
+        <source src="https://drive.google.com/uc?export=download&id=1LzyP0z5LALOHKond6eF1anVrfIOqH2a1" type="video/mp4">
+        Tu navegador no soporta el video.
+    </video>
+
+    <!-- Capa de superposición con opacidad -->
+    <div class="overlay"></div>
+
+    <main class="content-container w-full max-w-sm mx-auto">
+        <div class="relative z-10 flex flex-col items-center space-y-8 py-16">
+            
+            <!-- Logo de la productora -->
+            <img src="https://i.imgur.com/Qk9b8uQ.png" alt="Logo The Calentón" class="w-48 h-auto mb-4 rounded-xl shadow-lg border-2 border-green-500" onerror="this.onerror=null;this.src='https://placehold.co/400x150/000/00ff00?text=Logo+The+Calent%C3%B3n'">
+
+            <!-- Información resumida -->
+            <div class="text-white text-center">
+                <p class="text-3xl font-bold section-title mb-2">Mi Ternerita House</p>
+                <p class="text-2xl font-semibold text-gray-200">20.09</p>
+            </div>
+
+            <!-- Logos de las 4 estaciones -->
+            <div class="flex justify-center items-center space-x-4 w-full">
+                <img src="https://i.imgur.com/f9W9g8b.png" alt="Logo Invierno" class="w-16 h-16 rounded-full" onerror="this.onerror=null;this.src='https://placehold.co/64x64/000/00ff00?text=Invierno'">
+                <img src="https://i.imgur.com/K0G36zS.png" alt="Logo Otoño" class="w-16 h-16 rounded-full" onerror="this.onerror=null;this.src='https://placehold.co/64x64/000/00ff00?text=Otoño'">
+                <img src="https://i.imgur.com/dK46t5j.png" alt="Logo Primavera" class="w-16 h-16 rounded-full" onerror="this.onerror=null;this.src='https://placehold.co/64x64/000/00ff00?text=Primavera'">
+                <img src="https://i.imgur.com/n6tB2pG.png" alt="Logo Verano" class="w-16 h-16 rounded-full" onerror="this.onerror=null;this.src='https://placehold.co/64x64/000/00ff00?text=Verano'">
+            </div>
+
+            <!-- Iconos de redes sociales -->
+            <div class="flex justify-center items-center space-x-6">
+                <a href="https://www.instagram.com/thecalentonve?igsh=MTdwb3FxM2VhaWs1dw==" target="_blank" class="social-icon">
+                    <img src="https://i.imgur.com/w21vY4P.png" alt="Instagram" class="w-8 h-8 rounded-full" onerror="this.onerror=null;this.src='https://placehold.co/32x32/000/00ff00?text=IG'">
+                </a>
+                <a href="https://wa.link/a7u165" target="_blank" class="social-icon">
+                    <img src="https://i.imgur.com/kP8573X.png" alt="WhatsApp" class="w-8 h-8 rounded-full" onerror="this.onerror=null;this.src='https://placehold.co/32x32/000/00ff00?text=WA'">
+                </a>
+                <a href="https://t.me/lacapitaldelperreo" target="_blank" class="social-icon">
+                    <img src="https://i.imgur.com/L13jS6t.png" alt="Telegram" class="w-8 h-8 rounded-full" onerror="this.onerror=null;this.src='https://placehold.co/32x32/000/00ff00?text=TG'">
+                </a>
+                <a href="https://vm.tiktok.com/ZMAB7Q1MS/" target="_blank" class="social-icon">
+                    <img src="https://i.imgur.com/C7D7w9L.png" alt="TikTok" class="w-8 h-8 rounded-full" onerror="this.onerror=null;this.src='https://placehold.co/32x32/000/00ff00?text=TK'">
+                </a>
+            </div>
+
+            <!-- Botón para comprar entradas -->
+            <a href="https://wa.link/a7u165" target="_blank" class="buy-button px-8 py-3 rounded-full text-lg shadow-lg">
+                COMPRAR ENTRADAS
+            </a>
+
+            <!-- Rectángulo con la información -->
+            <div class="info-card p-6 mt-8 rounded-3xl w-full text-left">
+                <h2 class="text-3xl font-bold section-title mb-4">Cover</h2>
+                <p class="mb-2 text-xl font-bold">GENERAL (Brazalete)</p>
+                <p class="mb-6 text-2xl font-extrabold text-white">Precio general ($7)</p>
+
+                <div class="line w-full mb-6"></div>
+
+                <h2 class="text-3xl font-bold section-title mb-4">PREVENTA EXCLUSIVA</h2>
+                <p class="mb-2">¡Aprovecha un 30% de descuento! Solo $5 si adquieres tu brazalete entre el 12 de septiembre y el dia del evento antes de las 12:00 AM</p>
+                <p class="mb-6 font-bold">Compra fácil: Puedes adquirir tu brazalete a través de cualquiera de nuestras redes sociales.</p>
+                <p class="mb-6 font-bold text-sm text-gray-400">Importante: Cada brazalete es válido para una sola entrada.</p>
+
+                <div class="line w-full mb-6"></div>
+
+                <h2 class="text-3xl font-bold section-title mb-4">Pre-Consumo</h2>
+                <p class="mb-2 text-xl font-bold">Para grupos grandes:</p>
+                <ul class="list-disc list-inside mb-6 space-y-1 ml-4">
+                    <li>Santa Teresa Linaje | $45 (4 personas)</li>
+                    <li>Santa Teresa 1796 | $60 (5 personas)</li>
+                    <li>Vodka Smirnoff | $45 (4 personas)</li>
+                    <li>Old Parr y Buchanan's 12 años | $70 (5 personas)</li>
+                    <li>Old Parr Silver | $50 (5 personas)</li>
+                    <li>Espumante Amaluna | $30 (2 personas)</li>
+                </ul>
+                <p class="mb-2 text-xl font-bold">Para disfrutar individualmente:</p>
+                <ul class="list-disc list-inside mb-6 space-y-1 ml-4">
+                    <li>Cócteles | Desde $5</li>
+                </ul>
+                <p class="text-sm text-gray-400">Más opciones: Pide el menú y consulta por otros tipos de pre-consumo, como soft drinks y tipos de cócteles.</p>
+
+                <div class="line w-full mt-6 mb-6"></div>
+
+                <h2 class="text-3xl font-bold section-title mb-4">Informacion</h2>
+                <ul class="list-disc list-inside space-y-3 ml-4">
+                    <li><span class="font-bold">Pago:</span> Tanto el cover como el pre-consumo se deben cancelar antes de ingresar al evento.</li>
+                    <li><span class="font-bold">Fecha y Hora:</span> La fiesta comienza a las 10:00 PM.</li>
+                    <li><span class="font-bold">Dress Code:</span> Y2K</li>
+                    <li><span class="font-bold">Lugar:</span> Mi Ternerita House</li>
+                    <li><span class="font-bold">Line-Up:</span> DJ Luis Gutiérrez y DJ Javier León</li>
+                    <li><span class="font-bold">Requisito Indispensable:</span> Presentar cédula de identidad original (+18).</li>
+                </ul>
+                <p class="mt-6 text-sm text-gray-400">Recomendación: Llega con tiempo para agilizar el acceso.</p>
+                
+                <div class="line w-full mt-6 mb-6"></div>
+
+                <p class="text-sm italic mb-4">El CLIMA ha colapsado, los sistemas se han salido de control. Un fenómeno está alterando las condiciones meteorológicas a niveles extremos.</p>
+                <p class="text-sm italic mb-4">Maracaibo ahora tiene un CLIMA inestable, no apto para humanos. Se ha autorizado el acceso al laboratorio. Para asegurar tu entrada, contáctanos.</p>
+                <p class="text-sm mb-4 font-bold text-white">Las devoluciones se realizan solo hasta 72 horas antes del evento.</p>
+                <p class="text-lg font-bold mb-4">¡Te esperamos para una noche inolvidable!</p>
+                <p class="text-sm italic mb-2">La única regla es que no hay reglas, recuerda que las noches locas crean los mejores recuerdos.</p>
+                <p class="text-sm italic">Lo que pasa en el Calentón, se queda en el Calentón . . .</p>
+            </div>
+
+            <!-- Iconos de redes sociales al final -->
+            <div class="flex justify-center items-center space-x-6 mt-8">
+                <a href="https://www.instagram.com/thecalentonve?igsh=MTdwb3FxM2VhaWs1dw==" target="_blank" class="social-icon">
+                    <img src="https://i.imgur.com/w21vY4P.png" alt="Instagram" class="w-8 h-8 rounded-full" onerror="this.onerror=null;this.src='https://placehold.co/32x32/000/00ff00?text=IG'">
+                </a>
+                <a href="https://wa.link/a7u165" target="_blank" class="social-icon">
+                    <img src="https://i.imgur.com/kP8573X.png" alt="WhatsApp" class="w-8 h-8 rounded-full" onerror="this.onerror=null;this.src='https://placehold.co/32x32/000/00ff00?text=WA'">
+                </a>
+                <a href="https://t.me/lacapitaldelperreo" target="_blank" class="social-icon">
+                    <img src="https://i.imgur.com/L13jS6t.png" alt="Telegram" class="w-8 h-8 rounded-full" onerror="this.onerror=null;this.src='https://placehold.co/32x32/000/00ff00?text=TG'">
+                </a>
+                <a href="https://vm.tiktok.com/ZMAB7Q1MS/" target="_blank" class="social-icon">
+                    <img src="https://i.imgur.com/C7D7w9L.png" alt="TikTok" class="w-8 h-8 rounded-full" onerror="this.onerror=null;this.src='https://placehold.co/32x32/000/00ff00?text=TK'">
+                </a>
+            </div>
+            
+        </div>
+    </main>
+
+</body>
+</html>
